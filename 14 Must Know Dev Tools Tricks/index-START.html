@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("Hello")
+
+    // Interpolated
+    console.log('Hello I am a %s string!', '😎')
+    console.log(`Hello I am ${🏈}!`)
+
+    // Styled
+    console.log('%c I am some amazing text', 'font-size:20px;')
+
+    // warning!
+    console.warn('OOOH Noooo!!!')
+
+    // Error :|
+    console.error("OOOOH BOOOY")
+
+    // Info
+    console.info('Crocodiles eat 3-4 people a year')
+
+    // Testing
+    console.assert(1 === 2, 'That is wrong!')
+
+    // clearing
+    //console.clear(); This just clears your entire console
+
+    // Viewing DOM Elements
+    console.log(p)
+    console.dir(p) // allows you to ake a look at the classList
+
+    console.clear()
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`); // or groupCollapsed
+      console.log(`this is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.groupEnd(`${dog.name}`);
+    })
+
+    // counting
+    console.count('Word'); // Counts how many times we used something in the code
+
+    // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/jcovington16')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    // table
+    console.table(dogs);
+
+  </script>
+</body>
+</html>
